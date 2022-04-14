@@ -1,14 +1,25 @@
 export interface PostCategoryList {
   name: string;
-  totalPosts: number;
+  count: number;
 }
 
 export interface PostFrontmatter {
   title: string;
   date: number;
+  category?: string;
 }
 
-export interface PostPageProps extends PostFrontmatter {
-  content: string;
-  categoryList: PostCategoryList[];
+export interface PostPageProps {
+  data: {
+    content: string;
+    categoryList: PostCategoryList[];
+  } & PostFrontmatter;
+}
+
+export interface PostListPageProps {
+  data: {
+    category: string;
+    postList: PostFrontmatter[];
+    categoryList: PostCategoryList[];
+  };
 }
